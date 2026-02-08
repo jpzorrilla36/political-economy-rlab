@@ -19,12 +19,12 @@ This repository contains materials for the R lab sessions on causal inference in
 
 ## TA Session Schedule
 
-| Week | Date | Topic | Materials |
-|---|---|---|---|
-| 5 | Mon, Feb 9, 2026 | Introduction to R and Randomized Control Trials (RCTs) | week05_rct/ |
-| 5 | Wed, Feb 11, 2026 | Instrumental Variables (IV) | week05_iv/ |
-| 8 | Wed, Mar 4, 2026 | Regression Discontinuity Design (RDD) | week08_rdd/ |
-| 9 | Mon, Mar 9, 2026 | Difference-in-Differences (DiD) | week09_did/ |
+| Week | Date | Topic | 
+|---|---|---|
+| 5 | Mon, Feb 9, 2026 | Introduction to R and Randomized Control Trials (RCTs) |
+| 5 | Wed, Feb 11, 2026 | Instrumental Variables (IV) |
+| 8 | Wed, Mar 4, 2026 | Regression Discontinuity Design (RDD) |
+| 9 | Mon, Mar 9, 2026 | Difference-in-Differences (DiD) |
 
 ---
 
@@ -34,7 +34,6 @@ This repository contains materials for the R lab sessions on causal inference in
 - R and RStudio setup
 - R scripting basics and project organization
 - Potential outcomes framework
-- Average Treatment Effects (ATE, ATT)
 - Estimation of treatment effects using difference in means and regression
 - RCT implementation and inference in R
 
@@ -42,8 +41,7 @@ This repository contains materials for the R lab sessions on causal inference in
 - Endogeneity and omitted variable bias
 - Instrument relevance and exclusion restriction
 - Two-Stage Least Squares (2SLS)
-- Weak instruments
-- IV estimation and diagnostics in R
+- IV estimation in R
 
 ### Week 8: Regression Discontinuity Design
 - Sharp vs. fuzzy RDD
@@ -56,7 +54,6 @@ This repository contains materials for the R lab sessions on causal inference in
 - Parallel trends assumption
 - Two-way fixed effects
 - Event-study designs
-- Interpretation and common pitfalls
 - DiD estimation in R
 
 ---
