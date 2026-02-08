@@ -20,16 +20,14 @@ pacman::p_load(
   tidyr,      # Reshaping data: pivot_longer, pivot_wider, separate, unite
   lubridate,  # Date/time handling: ymd, dmy, year, month, date arithmetic
   stringr,    # String manipulation: str_detect, str_replace, str_extract, str_split
-  conflicted, # Manages function name conflicts between packages
   readxl,     # Import Excel files: read_excel for .xls and .xlsx
   writexl,    # Export to Excel: write_xlsx for data frames
   fixest,     # Fast fixed-effects models: feols, fepois for econometric analysis
   here,       # Project-relative paths: here() for reproducible file paths
-  haven       # Read/write Stata/SPSS/SAS files: read_dta, write_dta
+  haven,      # Read/write Stata/SPSS/SAS files: read_dta, write_dta
+  ggplot2,    # For creating customizable data visualization
 )
 
-# Conflicts prefer
-conflicts_prefer(dplyr::filter)
 
 # Clear workspace
 rm(list = ls())
@@ -176,7 +174,7 @@ result <- panel_data %>%
   select(firm_id, revenue, employees) %>%
   arrange(desc(revenue))
 
-print(result)
+result
 
 
 ## 4.1 FILTER - Selecting Rows -------------------------------------------------
@@ -538,9 +536,9 @@ anti_result <- df_a %>% anti_join(df_b, by = "id")
 print("\nANTI JOIN (A not in B):")
 print(anti_result)
 
-################################################################################
-# EXERCISE 1: Data Frame Manipulation (10 minutes)
-################################################################################
+
+# EXERCISE 1: Data Frame Manipulation (10 minutes) -----------------------------
+
 # Using panel_data:
 # 1. Calculate the mean revenue by industry
 # 2. Find the firm-year with highest revenue growth
@@ -551,9 +549,8 @@ print(anti_result)
 # aggregate(revenue ~ industry, data = panel_data, mean)
 # panel_data[which.max(panel_data$revenue_growth), ]
 
-################################################################################
-# PART 6: VARIABLE TRANSFORMATIONS FOR ECONOMETRICS
-################################################################################
+
+# PART 6: VARIABLE TRANSFORMATIONS FOR ECONOMETRICS ---------------------------------
 
 # Create comprehensive set of econometric variables
 econometric_data <- panel_data %>%
@@ -617,9 +614,8 @@ for(ind in unique(econometric_data$industry)) {
   econometric_data[[paste0("ind_", ind)]] <- as.numeric(econometric_data$industry == ind)
 }
 
-################################################################################
-# PART 7: DATA QUALITY CHECKS
-################################################################################
+
+# PART 7: DATA QUALITY CHECKS --------------------------------------------------
 
 # Check for outliers using multiple methods
 outlier_analysis <- econometric_data %>%
@@ -658,31 +654,33 @@ winsorize <- function(x, probs = c(0.01, 0.99)) {
 econometric_data$revenue_winsorized <- winsorize(econometric_data$revenue)
 econometric_data$employees_winsorized <- winsorize(econometric_data$employees)
 
-################################################################################
-# VISUALIZATION: Panel Data Patterns
-################################################################################
+
+## 7.1 VISUALIZATION: Panel Data Patterns --------------------------------------
 
 # Revenue trends by firm
-ggplot(panel_data, aes(x = year, y = revenue, color = factor(firm_id))) +
-  geom_line(size = 1) +
-  geom_point(size = 2) +
+trends <- ggplot(panel_data, aes(x = year, y = revenue, color = factor(firm_id))) +
+  geom_line(linewidth = 1) +
+  geom_point(linewidth = 2) +
   facet_wrap(~ industry) +
   theme_minimal() +
   labs(title = "Revenue Trends by Firm and Industry",
        x = "Year", y = "Revenue", color = "Firm ID")
 
+
+
 # Distribution of revenue growth
-ggplot(filter(panel_data, !is.na(revenue_growth)), 
+revenue <- ggplot(filter(panel_data, !is.na(revenue_growth)), 
        aes(x = revenue_growth)) +
-  geom_histogram(bins = 20, fill = "steelblue", color = "black", alpha = 0.7) +
-  geom_vline(xintercept = 0, color = "red", linetype = "dashed", size = 1) +
+  geom_histogram(bins = 20, fill = "dodgerblue2", color = "black", alpha = 0.7) +
+  geom_vline(xintercept = 0, color = "firebrick2", linetype = "dashed", linewidth = 1) +
   theme_minimal() +
   labs(title = "Distribution of Revenue Growth Rates",
        x = "Revenue Growth (%)", y = "Frequency")
 
-################################################################################
-# PART 8: PREPARING DATA FOR REGRESSION
-################################################################################
+revenue
+
+
+# PART 8: PREPARING DATA FOR REGRESSION ----------------------------------------
 
 # Create final dataset for analysis
 regression_ready <- econometric_data %>%
