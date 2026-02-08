@@ -61,5 +61,3 @@ This repository contains materials for the R lab sessions on causal inference in
 
 ---
 
-## Repository Structure
-
