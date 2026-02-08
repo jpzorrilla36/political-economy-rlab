@@ -34,7 +34,6 @@ This repository contains materials for the R lab sessions on causal inference in
 - R and RStudio setup
 - R scripting basics and project organization
 - Potential outcomes framework
-- Average Treatment Effects (ATE, ATT)
 - Estimation of treatment effects using difference in means and regression
 - RCT implementation and inference in R
 
@@ -42,8 +41,7 @@ This repository contains materials for the R lab sessions on causal inference in
 - Endogeneity and omitted variable bias
 - Instrument relevance and exclusion restriction
 - Two-Stage Least Squares (2SLS)
-- Weak instruments
-- IV estimation and diagnostics in R
+- IV estimation in R
 
 ### Week 8: Regression Discontinuity Design
 - Sharp vs. fuzzy RDD
@@ -56,7 +54,6 @@ This repository contains materials for the R lab sessions on causal inference in
 - Parallel trends assumption
 - Two-way fixed effects
 - Event-study designs
-- Interpretation and common pitfalls
 - DiD estimation in R
 
 ---
