@@ -19,12 +19,12 @@ This repository contains materials for the R lab sessions on causal inference in
 
 ## TA Session Schedule
 
-| Week | Date | Topic | Materials |
+| Week | Date | Topic | 
 |---|---|---|---|
-| 5 | Mon, Feb 9, 2026 | Introduction to R and Randomized Control Trials (RCTs) | week05_rct/ |
-| 5 | Wed, Feb 11, 2026 | Instrumental Variables (IV) | week05_iv/ |
-| 8 | Wed, Mar 4, 2026 | Regression Discontinuity Design (RDD) | week08_rdd/ |
-| 9 | Mon, Mar 9, 2026 | Difference-in-Differences (DiD) | week09_did/ |
+| 5 | Mon, Feb 9, 2026 | Introduction to R and Randomized Control Trials (RCTs) |
+| 5 | Wed, Feb 11, 2026 | Instrumental Variables (IV) |
+| 8 | Wed, Mar 4, 2026 | Regression Discontinuity Design (RDD) |
+| 9 | Mon, Mar 9, 2026 | Difference-in-Differences (DiD) |
 
 ---
 
