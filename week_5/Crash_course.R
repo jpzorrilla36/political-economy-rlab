@@ -25,7 +25,7 @@ pacman::p_load(
   fixest,     # Fast fixed-effects models: feols, fepois for econometric analysis
   here,       # Project-relative paths: here() for reproducible file paths
   haven,      # Read/write Stata/SPSS/SAS files: read_dta, write_dta
-  ggplot2,    # For creating customizable data visualization
+  ggplot2    # For creating customizable data visualization
 )
 
 
