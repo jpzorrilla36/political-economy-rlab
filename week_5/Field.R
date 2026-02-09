@@ -232,6 +232,8 @@ balance_regression <- RCT::balance_regression(
     data = balance_vars,
     treatment = "treatment")
 
+balance_regression$F_test
+
 # Multiple testing consideration
 cat("\n⚠ MULTIPLE TESTING NOTE:\n")
 cat(sprintf("With %d tests at α=0.05, expect %.1f false positives by chance\n", 
@@ -253,7 +255,8 @@ if("RCT" %in% (.packages())) {
       strata_edad = RCT::ntile_label(edad, 3),
       strata_densidad = RCT::ntile_label(densidad_cotizacion * 100, 3),
       strata_ingreso = RCT::ntile_label(salario_cotizacion, 3)
-    )
+    ) %>% 
+    rename(treat = treatment)
   
   # Perform stratified randomization
   stratified_assignment <- RCT::treatment_assign(
@@ -283,6 +286,9 @@ if("RCT" %in% (.packages())) {
     cat("⚠ High misfit rate - consider fewer strata\n")
   }
 }
+
+view(stratified_assignment$summary_strata)
+view(stratified_assignment$data)
 
 
 # 7. CLUSTER RANDOMIZATION -----------------------------------------------------
