@@ -660,12 +660,13 @@ econometric_data$employees_winsorized <- winsorize(econometric_data$employees)
 # Revenue trends by firm
 trends <- ggplot(panel_data, aes(x = year, y = revenue, color = factor(firm_id))) +
   geom_line(linewidth = 1) +
-  geom_point(linewidth = 2) +
+  geom_point(size = 2) +
   facet_wrap(~ industry) +
   theme_minimal() +
   labs(title = "Revenue Trends by Firm and Industry",
        x = "Year", y = "Revenue", color = "Firm ID")
 
+trends
 
 
 # Distribution of revenue growth
